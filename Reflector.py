@@ -6,4 +6,4 @@ class Reflector(Translator):
         self.permutation = permutation
 
     def translation(self, letter):
-        return self.permutation[self.letterToIndex(letter)]
+        return self.permutation[Translator.letterToindex(letter)]

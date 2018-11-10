@@ -6,18 +6,30 @@ class Translator():
         pass
 
 
-    def indexToletter(self, index):
+    def translation(selfs):
+        pass
+
+    def reversetranslation(self):
+        base = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        i = 0
+        for letter in self.permutation:
+            self.reversepermutation[Translator.letterToindex(letter)] = base[i]
+            i = i + 1
+
+
+    @staticmethod
+    def indexToletter(index):
         return chr(index + ord('A'))
 
-
-    def letterToindex(self,letter):
+    @staticmethod
+    def letterToindex(letter):
         return ord(letter) - ord('A')
 
     def circularshift(self, index, letter):
         if index < 0:
             index += 26
 
-        return self.indexToletter(self.letterToindex(letter) + index) % 26
+        return self.indexToletter((self.letterToindex(letter) + index) % 26)
 
 
 

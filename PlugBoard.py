@@ -9,7 +9,6 @@ class PlugBoard(Translator):
         self.permutation = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
         self.setConfig(config)
 
-
     def setConfig(self, config):
 
         if len(config) > 10:
@@ -20,13 +19,13 @@ class PlugBoard(Translator):
            for pair in config:
                f_letter = pair[0]
                s_letter = pair[1]
-               f_index = self.letterToindex(f_letter)
-               s_index = self.letterToindex(s_letter)
+               f_index = Translator.letterToindex(f_letter)
+               s_index = Translator.letterToindex(s_letter)
                self.permutation[f_index] = s_letter
                self.permutation[s_index] = f_letter
 
     def translation(self, letter):
-        return self.permutation[self.letterToIndex(letter)]
+        return self.permutation[Translator.letterToindex(letter)]
 
 
 
