@@ -9,12 +9,14 @@ class Enigma():
               ,Rotor("III", list("BDFHJLCPRTXVZNYEIWGAKMUSQO"), "V"), Rotor("IV", list("ESOVPZJAYQUIRHXLNFTGKDCMWB"), "J"),
               Rotor("V", list("VZBRGITYUPSDNHLXAWMJQOFECK"), "Z")]
 
-    def __init__(self, rRotor, mRotor, lRotor, rSettings, mSettings, lSettings, rOffset, mOffset, lOffset, config):
+    def __init__(self, lRotor , mRotor ,rRotor, lSettings, mSettings, rSettings, lOffset, mOffset, rOffset, config):
 
         if rRotor != mRotor != lRotor:
             self.rRotor = self.rotors[rRotor - 1]
             self.mRotor = self.rotors[mRotor - 1]
             self.lRotor = self.rotors[lRotor - 1]
+
+
 
             self.rRotor.setSettings(rSettings)
             self.mRotor.setSettings(mSettings)
@@ -23,6 +25,9 @@ class Enigma():
             self.rRotor.setOffset(rOffset)
             self.mRotor.setOffset(mOffset)
             self.lRotor.setOffset(lOffset)
+
+            print(self.rRotor.getSettings())
+
 
             self.reflector = Reflector(list("YRUHQSLDPXNGOKMIEBFZCWVJAT"))
 
@@ -43,28 +48,28 @@ class Enigma():
 
         #Encrypting the letter
         letter = self.plugboard.translation(letter)
-        print(letter)
+
         letter = self.rRotor.translation(letter)
-        print(letter)
+
         letter = self.mRotor.translation(letter)
-        print(letter)
+
         letter = self.lRotor.translation(letter)
-        print(letter)
+
         letter =  self.reflector.translation(letter)
-        print(letter)
+
 
         self.rRotor.changeDir()
         self.mRotor.changeDir()
         self.lRotor.changeDir()
-        print("     ")
+
         letter = self.lRotor.translation(letter)
-        print(letter)
+
         letter = self.mRotor.translation(letter)
-        print(letter)
+
         letter = self.rRotor.translation(letter)
-        print(letter)
+
         letter = self.plugboard.translation(letter)
-        print(letter)
+
 
         self.rRotor.changeDir()
         self.mRotor.changeDir()
